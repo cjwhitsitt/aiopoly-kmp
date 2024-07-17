@@ -6,6 +6,6 @@ fun main() = application {
         onCloseRequest = ::exitApplication,
         title = "AIopoly",
     ) {
-        App()
+        App(platform = getPlatform())
     }
 }
