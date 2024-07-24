@@ -7,6 +7,10 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -22,6 +26,7 @@ enum class Screen {
 @Composable
 fun App() {
     val navController = rememberNavController()
+    var promptValue by remember { mutableStateOf("") }
 
     MaterialTheme {
         Scaffold(
@@ -38,11 +43,15 @@ fun App() {
                     .padding(innerPadding)
             ) {
                 composable(Screen.Home.name) { HomeScreen(
+                    promptValue = promptValue,
+                    onPromptChange = { promptValue = it },
                     onGenerateClick = {
                         navController.navigate(Screen.Game.name)
                     }
                 ) }
-                composable(Screen.Game.name) { GameScreen() }
+                composable(Screen.Game.name) { GameScreen(
+                    promptValue = promptValue
+                ) }
             }
         }
     }

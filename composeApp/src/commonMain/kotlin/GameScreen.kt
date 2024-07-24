@@ -5,6 +5,7 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 @Preview
 fun GameScreen(
+    promptValue: String = ""
 ) {
-    Text("Game Screen")
+    Text("Prompt = $promptValue")
 }

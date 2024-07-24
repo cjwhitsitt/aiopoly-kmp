@@ -18,10 +18,11 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 @Composable
 @Preview
 fun HomeScreen(
-    onGenerateClick: () -> Unit = {},
+    promptValue: String = "",
+    onPromptChange: (String) -> Unit = {},
+    onGenerateClick: () -> Unit = {}
 ) {
     val paddings = 16.dp
-    var promptValue by remember { mutableStateOf("") }
 
     Column(
         modifier = Modifier.fillMaxWidth(),
@@ -34,7 +35,7 @@ fun HomeScreen(
         )
         TextField(
             value = promptValue,
-            onValueChange = { promptValue = it },
+            onValueChange = onPromptChange,
             modifier = Modifier.padding(horizontal = paddings)
         )
         Button(
