@@ -21,6 +21,8 @@ enum class Screen {
 @Preview
 @Composable
 fun App() {
+    val navController = rememberNavController()
+
     MaterialTheme {
         Scaffold(
             topBar = { TopAppBar(
@@ -28,14 +30,19 @@ fun App() {
             ) }
         ) { innerPadding ->
             NavHost(
-                navController = rememberNavController(),
-                startDestination = "home",
+                navController = navController,
+                startDestination = Screen.Home.name,
                 modifier = Modifier
                     .fillMaxSize()
                     .verticalScroll(rememberScrollState())
                     .padding(innerPadding)
             ) {
-                composable(Screen.Home.name) { HomeScreen() }
+                composable(Screen.Home.name) { HomeScreen(
+                    onGenerateClick = {
+                        navController.navigate(Screen.Game.name)
+                    }
+                ) }
+                composable(Screen.Game.name) { GameScreen() }
             }
         }
     }

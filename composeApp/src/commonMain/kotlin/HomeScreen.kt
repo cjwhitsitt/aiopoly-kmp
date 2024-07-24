@@ -17,7 +17,9 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 @Preview
-fun HomeScreen() {
+fun HomeScreen(
+    onGenerateClick: () -> Unit = {},
+) {
     val paddings = 16.dp
     var promptValue by remember { mutableStateOf("") }
 
@@ -36,9 +38,7 @@ fun HomeScreen() {
             modifier = Modifier.padding(horizontal = paddings)
         )
         Button(
-            onClick = {
-                // TODO: generate game
-            },
+            onClick = onGenerateClick,
             modifier = Modifier.padding(paddings)
         ) {
             Text("Generate")
