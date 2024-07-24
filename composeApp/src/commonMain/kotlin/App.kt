@@ -1,52 +1,41 @@
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.AlertDialog
-import androidx.compose.material.Button
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
-import androidx.compose.material.TextField
 import androidx.compose.material.TopAppBar
-import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import org.jetbrains.compose.ui.tooling.preview.Preview
+
+enum class Screen {
+    Home,
+    Game
+}
 
 @Preview
 @Composable
 fun App() {
-    var promptValue by remember { mutableStateOf("") }
-    val paddings = 16.dp
-
     MaterialTheme {
         Scaffold(
             topBar = { TopAppBar(
                 title = { Text("AIopoly") }
             ) }
-        ) {
-            Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                Spacer(Modifier.weight(2f))
-                Text(
-                    "Enter a theme for your game",
-                    modifier = Modifier.padding(paddings)
-                )
-                TextField(
-                    value = promptValue,
-                    onValueChange = { promptValue = it },
-                    modifier = Modifier.padding(horizontal = paddings)
-                )
-                Button(
-                    onClick = {
-                        // TODO: generate game
-                    },
-                    modifier = Modifier.padding(paddings)
-                ) {
-                    Text("Generate")
-                }
-                Spacer(Modifier.weight(2f))
+        ) { innerPadding ->
+            NavHost(
+                navController = rememberNavController(),
+                startDestination = "home",
+                modifier = Modifier
+                    .fillMaxSize()
+                    .verticalScroll(rememberScrollState())
+                    .padding(innerPadding)
+            ) {
+                composable(Screen.Home.name) { HomeScreen() }
             }
         }
     }
