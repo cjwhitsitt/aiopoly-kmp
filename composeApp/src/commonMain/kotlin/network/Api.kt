@@ -33,7 +33,7 @@ class Api {
                 theme = prompt
             ))
         }
-        print("Response: ${response.body<String>()}")
+        println("Response: ${response.body<String>()}")
         return response.body()
     }
 }
