@@ -1,4 +1,6 @@
-This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop.
+[Presentation slides accompanying this as a demo](https://docs.google.com/presentation/d/1UhqwqyV0dTWzZ_fxdPaZz3p8LLyRGsyH-7LHA32258k/edit?usp=sharing)
+
+This is a Kotlin Multiplatform project rebuilding the [AIopoly demo Flutter app](https://github.com/cjwhitsitt/aiopoly-flutter).
 
 * `/composeApp` is for code that will be shared across your Compose Multiplatform applications.
   It contains several subfolders:
@@ -13,5 +15,3 @@ This is a Kotlin Multiplatform project targeting Android, iOS, Web, Desktop.
 Learn more about [Kotlin Multiplatform](https://www.jetbrains.com/help/kotlin-multiplatform-dev/get-started.html),
 [Compose Multiplatform](https://github.com/JetBrains/compose-multiplatform/#compose-multiplatform),
 [Kotlin/Wasm](https://kotl.in/wasm/)…
-
-[Presentation slides accompanying this as a demo](https://docs.google.com/presentation/d/1UhqwqyV0dTWzZ_fxdPaZz3p8LLyRGsyH-7LHA32258k/edit?usp=sharing)
